@@ -182,7 +182,7 @@ async function tryRenew(page, beforeMins) {
       } catch (e) { console.log('⚠️ IP 检查失败'); }
     }
     console.log('🌐 打开登录页面');
-    await page.goto(LOGIN_URL, { waitUntil: 'load', timeout: 30000 });
+    await page.goto(LOGIN_URL, { waitUntil: 'load', timeout: 60000 });
     await page.screenshot({ path: '1_navigation.png' });
     console.log('📧 填写账号密码');
     await page.locator('#memberid').fill(ACC);
@@ -190,7 +190,7 @@ async function tryRenew(page, beforeMins) {
     await page.screenshot({ path: '1.5_filled.png' });
     console.log('🖱️ 提交登录');
     await Promise.all([
-      page.waitForNavigation({ waitUntil: 'load', timeout: 30000 }),
+      page.waitForNavigation({ waitUntil: 'load', timeout: 60000 }),
       page.locator('input[name="action_user_login"]').click()
     ]);
     await page.screenshot({ path: '2_after_login.png' });
